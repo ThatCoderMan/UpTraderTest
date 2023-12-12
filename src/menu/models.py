@@ -4,7 +4,13 @@ from django.db import models
 class MenuItem(models.Model):
     name = models.CharField(max_length=50)
     level = models.PositiveIntegerField(default=0)
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, related_name='children')
+    parent = models.ForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='children'
+    )
 
     def __str__(self):
         if self.parent is None:
